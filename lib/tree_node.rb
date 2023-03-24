@@ -40,16 +40,24 @@ class PolyTreeNode
     end
 
     def bfs(target)
-        queue = [*self.children]
+
+        return self if self.value == target 
+        
+        queue = [*@children]
 
         until queue.empty?
-            last = queue.pop
-            return last if last == target
-            queue.unshift(last.children)
+            last = queue.shift
+            return last if last.value == target
+            queue.push(*last.children)
         end
 
         nil
     end
+     #why are we calling children on the self node if we just want the root node in the queue 
 
+     #wont it just be the root node
+
+     #so it wont represent the nodes seperately
+    
     
 end
